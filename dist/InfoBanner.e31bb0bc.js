@@ -32700,7 +32700,13 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Title = function Title(props) {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "This weeks Build Master"));
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "This weeks Build Master is"), _react.default.createElement("div", null, _react.default.createElement("img", {
+    src: "http://127.0.0.1:8887/seagull-249638_960_720.jpg"
+  })), _react.default.createElement("div", null, _react.default.createElement("h2", null, "Adam Lammiman"), _react.default.createElement("div", null, _react.default.createElement("a", {
+    href: ""
+  }, "previous build master"), " ", _react.default.createElement("a", {
+    href: ""
+  }, "next build master"))));
 };
 
 var app = document.getElementById("app");
@@ -32733,7 +32739,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51422" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50302" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
