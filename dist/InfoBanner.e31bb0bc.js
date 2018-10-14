@@ -32688,7 +32688,7 @@ var styled = _styled(StyledComponent, constructWithOptions);
 
 var _default = styled;
 exports.default = _default;
-},{"fbjs/lib/hyphenateStyleName":"node_modules/fbjs/lib/hyphenateStyleName.js","react":"node_modules/react/index.js","stylis":"node_modules/stylis/stylis.js","stylis-rule-sheet":"node_modules/stylis-rule-sheet/index.js","prop-types":"node_modules/prop-types/index.js","stream":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/stream-browserify/index.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","react-is":"node_modules/react-is/index.js","process":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"Components/BuildMaster.jsx":[function(require,module,exports) {
+},{"fbjs/lib/hyphenateStyleName":"node_modules/fbjs/lib/hyphenateStyleName.js","react":"node_modules/react/index.js","stylis":"node_modules/stylis/stylis.js","stylis-rule-sheet":"node_modules/stylis-rule-sheet/index.js","prop-types":"node_modules/prop-types/index.js","stream":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/stream-browserify/index.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","react-is":"node_modules/react-is/index.js","process":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"Components/Banner.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32704,17 +32704,17 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var BuildMaster = function BuildMaster(props) {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "This weeks Build Master is"), _react.default.createElement("div", null, _react.default.createElement("img", {
-    src: "http://127.0.0.1:8887/beaker.jpg"
-  })), _react.default.createElement("div", null, _react.default.createElement("h2", null, "Adam Lammiman"), _react.default.createElement("div", null, _react.default.createElement("a", {
+var Banner = function Banner(props) {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, props.title), _react.default.createElement("div", null, _react.default.createElement("img", {
+    src: props.image
+  })), _react.default.createElement("div", null, _react.default.createElement("h2", null, props.name), _react.default.createElement("div", null, _react.default.createElement("a", {
     href: ""
   }, "previous build master"), " ", _react.default.createElement("a", {
     href: ""
   }, "next build master"))));
 };
 
-var _default = BuildMaster;
+var _default = Banner;
 exports.default = _default;
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.esm.js"}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -32725,15 +32725,19 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _BuildMaster = _interopRequireDefault(require("./Components/BuildMaster.jsx"));
+var _Banner = _interopRequireDefault(require("./Components/Banner.jsx"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 console.log('foo');
 var app = document.getElementById("app");
 
-_reactDom.default.render(_react.default.createElement(_BuildMaster.default, null), app);
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.esm.js","./Components/BuildMaster.jsx":"Components/BuildMaster.jsx"}],"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render(_react.default.createElement(_Banner.default, {
+  title: "This Weeks Build Master Is",
+  name: "Adam Lammiman",
+  image: "http://127.0.0.1:8887/beaker.jpg"
+}), app);
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.esm.js","./Components/Banner.jsx":"Components/Banner.jsx"}],"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -32760,7 +32764,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53301" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55350" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
