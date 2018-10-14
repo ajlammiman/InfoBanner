@@ -32688,8 +32688,13 @@ var styled = _styled(StyledComponent, constructWithOptions);
 
 var _default = styled;
 exports.default = _default;
-},{"fbjs/lib/hyphenateStyleName":"node_modules/fbjs/lib/hyphenateStyleName.js","react":"node_modules/react/index.js","stylis":"node_modules/stylis/stylis.js","stylis-rule-sheet":"node_modules/stylis-rule-sheet/index.js","prop-types":"node_modules/prop-types/index.js","stream":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/stream-browserify/index.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","react-is":"node_modules/react-is/index.js","process":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"index.js":[function(require,module,exports) {
+},{"fbjs/lib/hyphenateStyleName":"node_modules/fbjs/lib/hyphenateStyleName.js","react":"node_modules/react/index.js","stylis":"node_modules/stylis/stylis.js","stylis-rule-sheet":"node_modules/stylis-rule-sheet/index.js","prop-types":"node_modules/prop-types/index.js","stream":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/stream-browserify/index.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","react-is":"node_modules/react-is/index.js","process":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"Components/BuildMaster.jsx":[function(require,module,exports) {
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -32699,9 +32704,9 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Title = function Title(props) {
+var BuildMaster = function BuildMaster(props) {
   return _react.default.createElement("div", null, _react.default.createElement("h1", null, "This weeks Build Master is"), _react.default.createElement("div", null, _react.default.createElement("img", {
-    src: "http://127.0.0.1:8887/seagull-249638_960_720.jpg"
+    src: "http://127.0.0.1:8887/beaker.jpg"
   })), _react.default.createElement("div", null, _react.default.createElement("h2", null, "Adam Lammiman"), _react.default.createElement("div", null, _react.default.createElement("a", {
     href: ""
   }, "previous build master"), " ", _react.default.createElement("a", {
@@ -32709,10 +32714,26 @@ var Title = function Title(props) {
   }, "next build master"))));
 };
 
+var _default = BuildMaster;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.esm.js"}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _BuildMaster = _interopRequireDefault(require("./Components/BuildMaster.jsx"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log('foo');
 var app = document.getElementById("app");
 
-_reactDom.default.render(_react.default.createElement(Title, null), app);
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.esm.js"}],"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render(_react.default.createElement(_BuildMaster.default, null), app);
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.esm.js","./Components/BuildMaster.jsx":"Components/BuildMaster.jsx"}],"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -32739,7 +32760,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50302" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53301" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
