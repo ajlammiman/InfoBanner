@@ -1,5 +1,4 @@
 {
-  
   "name": "InfoBanner",
   "version": "1.0.0",
   "main": "index.js",
@@ -15,21 +14,27 @@
     "react-addons-test-utils": "^15.6.2"
   },
   "dependencies": {
+    "babel-preset-react": "^6.24.1",
     "parcel-bundler": "^1.10.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "styled-components": "^3.4.9"
   },
   "jest": {
-    "transform": {".*": "./node_modules/babel-jest"},
+    "transform": {
+      ".*": "./node_modules/babel-jest"
+    },
     "unmockedModulePathPatterns": [
-        "./node_modules/react",
-        "./node_modules/react-dom",
-        "./node_modules/react-addons-test-utils",
-        "./node_modules/fbjs"
+      "./node_modules/react",
+      "./node_modules/react-dom",
+      "./node_modules/react-addons-test-utils",
+      "./node_modules/fbjs"
     ]
   },
   "scripts": {
-    "test": "jest"
+    "prestart": "yarn",
+    "test": "jest",
+    "start": "parcel index.html",
+    "test:watch": "jest --watchAll"
   }
 }
