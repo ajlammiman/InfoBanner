@@ -5,5 +5,5 @@ import BuildBanner from './Components/BuildBanner.jsx'
 
 const app = document.getElementById("app");
 
-ReactDOM.render(<BuildBanner name="Adam Lammiman" image="Beaker.jpg" />,app);
+ReactDOM.render(<BuildBanner />,app);
 

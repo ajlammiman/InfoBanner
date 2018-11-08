@@ -33794,14 +33794,23 @@ var BuildBanner =
 function (_React$Component) {
   _inherits(BuildBanner, _React$Component);
 
-  function BuildBanner(props) {
+  function BuildBanner() {
     var _this;
 
     _classCallCheck(this, BuildBanner);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(BuildBanner).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BuildBanner).call(this));
     _this.state = {
-      "buildmaster": {}
+      "buildmaster": {
+        "week1": {
+          "name": "Adam Lammiman",
+          "image": "beaker.jpg"
+        },
+        "week2": {
+          "name": "John Bartram",
+          "image": "kermit.jpg"
+        }
+      }
     };
     return _this;
   }
@@ -33809,7 +33818,7 @@ function (_React$Component) {
   _createClass(BuildBanner, [{
     key: "render",
     value: function render() {
-      var currentmaster = this.props;
+      var currentmaster = this.state.buildmaster.week1;
       return _react.default.createElement("div", null, _react.default.createElement(_Banner.default, {
         title: "Last Weeks Build Master Is",
         name: currentmaster.name,
@@ -33838,10 +33847,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = document.getElementById("app");
 
-_reactDom.default.render(_react.default.createElement(_BuildBanner.default, {
-  name: "Adam Lammiman",
-  image: "Beaker.jpg"
-}), app);
+_reactDom.default.render(_react.default.createElement(_BuildBanner.default, null), app);
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.esm.js","./Components/BuildBanner.jsx":"Components/BuildBanner.jsx"}],"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -33869,7 +33875,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59096" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62414" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

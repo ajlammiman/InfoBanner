@@ -7,6 +7,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "jest": "^23.6.0",
@@ -19,17 +20,6 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "styled-components": "^3.4.9"
-  },
-  "jest": {
-    "transform": {
-      ".*": "./node_modules/babel-jest"
-    },
-    "unmockedModulePathPatterns": [
-      "./node_modules/react",
-      "./node_modules/react-dom",
-      "./node_modules/react-addons-test-utils",
-      "./node_modules/fbjs"
-    ]
   },
   "scripts": {
     "prestart": "yarn",
