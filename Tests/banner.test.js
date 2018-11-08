@@ -16,17 +16,25 @@ describe('Test Banner Render', () => {
             name: 'My Name'
         };
 
-        wrapper = shallow(<Banner title="Foo" name="Bar" />);
+        wrapper = shallow(<Banner title={props.title} name={props.name} />);
     });
 
     it('renders component', () => {
         expect(wrapper).toBeDefined();
     });
 
-    /*it('renders content', () => {
-        wrapper = shallow(<Banner title="Foo" name="Bar" />);
+    it('renders title', () => {
+        var title = wrapper.find('.title'); 
+       
+        expect(title).toHaveLength(1);
+        expect(title.text()).toBe(props.title);
+    });
 
-        expect(wrapper.getElementById('#title')).to.have.lengthOf(1);
-    });*/
+    it('renders name', () => {
+        var title = wrapper.find('.name'); 
+       
+        expect(title).toHaveLength(1);
+        expect(title.text()).toBe(props.name);
+    });
 
 });
