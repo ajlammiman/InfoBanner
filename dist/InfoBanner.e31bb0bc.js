@@ -33739,14 +33739,16 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _styledComponents = _interopRequireDefault(require("styled-components"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Banner = function Banner(props) {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, props.title), _react.default.createElement("div", null, _react.default.createElement("img", {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", {
+    className: "title"
+  }, props.title), _react.default.createElement("div", null, _react.default.createElement("img", {
     src: props.image
-  })), _react.default.createElement("div", null, _react.default.createElement("h2", null, props.name), _react.default.createElement("div", null, _react.default.createElement("a", {
+  })), _react.default.createElement("div", null, _react.default.createElement("h2", {
+    className: "name"
+  }, props.name), _react.default.createElement("div", null, _react.default.createElement("a", {
     href: ""
   }, "previous build master"), " ", _react.default.createElement("a", {
     href: ""
@@ -33755,7 +33757,7 @@ var Banner = function Banner(props) {
 
 var _default = Banner;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.esm.js"}],"Components/BuildBanner.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"Components/BuildBanner.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33801,16 +33803,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BuildBanner).call(this));
     _this.state = {
-      "buildmaster": {
-        "week1": {
-          "name": "Adam Lammiman",
-          "image": "beaker.jpg"
-        },
-        "week2": {
-          "name": "John Bartram",
-          "image": "kermit.jpg"
-        }
-      }
+      "buildmaster": [{
+        "name": "Adam Lammiman",
+        "image": "beaker.jpg"
+      }, {
+        "name": "John Bartram",
+        "image": "kermit.jpg"
+      }]
     };
     return _this;
   }
@@ -33818,7 +33817,7 @@ function (_React$Component) {
   _createClass(BuildBanner, [{
     key: "render",
     value: function render() {
-      var currentmaster = this.state.buildmaster.week1;
+      var currentmaster = this.state.buildmaster[1];
       return _react.default.createElement("div", null, _react.default.createElement(_Banner.default, {
         title: "Last Weeks Build Master Is",
         name: currentmaster.name,
@@ -33875,7 +33874,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62414" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56578" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

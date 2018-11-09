@@ -1,12 +1,12 @@
 {
-    "buildmaster": {
-        "week1" : {
-            "name" : "Adam Lammiman",
-            "image" : "beaker.jpg"
+    "buildmaster": [
+        {
+            "name": "Adam Lammiman",
+            "image": "beaker.jpg"
         },
-        "week2" : {
-            "name" : "John Bartram",
-            "image" : "kermit.jpg"
+        {
+            "name": "John Bartram",
+            "image": "kermit.jpg"
         }
-    }
+    ]
 }

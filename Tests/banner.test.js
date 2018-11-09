@@ -13,7 +13,8 @@ describe('Test Banner Render', () => {
     beforeEach(() => {
         props = {
             title: 'My Title',
-            name: 'My Name'
+            name: 'My Name',
+            image: 'image'
         };
 
         wrapper = shallow(<Banner title={props.title} name={props.name} />);
@@ -31,10 +32,10 @@ describe('Test Banner Render', () => {
     });
 
     it('renders name', () => {
-        var title = wrapper.find('.name'); 
+        var name = wrapper.find('.name'); 
        
-        expect(title).toHaveLength(1);
-        expect(title.text()).toBe(props.name);
+        expect(name).toHaveLength(1);
+        expect(name.text()).toBe(props.name);
     });
 
 });
