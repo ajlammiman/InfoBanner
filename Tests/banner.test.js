@@ -12,7 +12,6 @@ describe('Test Banner Render', () => {
 
     beforeEach(() => {
         props = {
-            title: 'My Title',
             name: 'My Name',
             image: 'image'
         };
@@ -24,13 +23,6 @@ describe('Test Banner Render', () => {
         expect(wrapper).toBeDefined();
     });
 
-    it('renders title', () => {
-        var title = wrapper.find('.title'); 
-       
-        expect(title).toHaveLength(1);
-        expect(title.text()).toBe(props.title);
-    });
-
     it('renders name', () => {
         var name = wrapper.find('.name'); 
        
@@ -39,3 +31,5 @@ describe('Test Banner Render', () => {
     });
 
 });
+
+

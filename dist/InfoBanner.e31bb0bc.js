@@ -33803,13 +33803,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BuildBanner).call(this));
     _this.state = {
-      "buildmaster": [{
-        "name": "Adam Lammiman",
-        "image": "beaker.jpg"
-      }, {
-        "name": "John Bartram",
-        "image": "kermit.jpg"
-      }]
+      "name": "Adam Lammiman",
+      "image": "beaker.jpg"
     };
     return _this;
   }
@@ -33817,9 +33812,9 @@ function (_React$Component) {
   _createClass(BuildBanner, [{
     key: "render",
     value: function render() {
-      var currentmaster = this.state.buildmaster[1];
+      var currentmaster = this.state;
       return _react.default.createElement("div", null, _react.default.createElement(_Banner.default, {
-        title: "Last Weeks Build Master Is",
+        title: "This Weeks Build Master Is",
         name: currentmaster.name,
         image: "http://127.0.0.1:8887/" + currentmaster.image
       }));
@@ -33874,7 +33869,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56578" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60866" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
