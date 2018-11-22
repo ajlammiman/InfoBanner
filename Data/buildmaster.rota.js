@@ -1,4 +1,4 @@
-{
+var Rota = {
     "buildmaster": [
         {
             "name": "Adam Lammiman",
@@ -10,3 +10,5 @@
         }
     ]
 }
+
+export default Rota;

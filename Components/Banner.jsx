@@ -9,7 +9,6 @@ const Banner = (props) =>
             </div>
             <div>
                 <h2 className="name">{props.name}</h2>
-                <div><a href="">previous build master</a> <a href="">next build master</a></div>
             </div>
         </div>    
 

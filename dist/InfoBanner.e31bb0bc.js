@@ -33748,16 +33748,30 @@ var Banner = function Banner(props) {
     src: props.image
   })), _react.default.createElement("div", null, _react.default.createElement("h2", {
     className: "name"
-  }, props.name), _react.default.createElement("div", null, _react.default.createElement("a", {
-    href: ""
-  }, "previous build master"), " ", _react.default.createElement("a", {
-    href: ""
-  }, "next build master"))));
+  }, props.name)));
 };
 
 var _default = Banner;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"Components/BuildBanner.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"Data/buildmaster.rota.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var Rota = {
+  "buildmaster": [{
+    "name": "Adam Lammiman",
+    "image": "beaker.jpg"
+  }, {
+    "name": "John Bartram",
+    "image": "kermit.jpg"
+  }]
+};
+var _default = Rota;
+exports.default = _default;
+},{}],"Components/BuildBanner.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33770,6 +33784,8 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _Banner = _interopRequireDefault(require("./Banner.jsx"));
+
+var _buildmasterRota = _interopRequireDefault(require("../Data/buildmaster.rota.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33802,10 +33818,7 @@ function (_React$Component) {
     _classCallCheck(this, BuildBanner);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BuildBanner).call(this));
-    _this.state = {
-      "name": "Adam Lammiman",
-      "image": "beaker.jpg"
-    };
+    _this.state = _buildmasterRota.default.buildmaster[0];
     return _this;
   }
 
@@ -33817,7 +33830,13 @@ function (_React$Component) {
         title: "This Weeks Build Master Is",
         name: currentmaster.name,
         image: "http://127.0.0.1:8887/" + currentmaster.image
-      }));
+      }), _react.default.createElement("div", null, _react.default.createElement("a", {
+        href: "",
+        "class": "previous"
+      }, "previous build master"), " ", _react.default.createElement("a", {
+        href: "",
+        "class": "next"
+      }, "next build master")));
     }
   }]);
 
@@ -33826,7 +33845,7 @@ function (_React$Component) {
 
 var _default = BuildBanner;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Banner.jsx":"Components/Banner.jsx"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Banner.jsx":"Components/Banner.jsx","../Data/buildmaster.rota.js":"Data/buildmaster.rota.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -33869,7 +33888,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60866" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63187" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
