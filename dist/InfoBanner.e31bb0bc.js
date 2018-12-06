@@ -33753,6 +33753,29 @@ var Banner = function Banner(props) {
 
 var _default = Banner;
 exports.default = _default;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"Components/Button.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Button = function Button(props) {
+  return _react.default.createElement("div", null, _react.default.createElement("a", {
+    href: "#",
+    className: props.class
+  }, props.text));
+};
+
+var _default = Button;
+exports.default = _default;
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"Data/buildmaster.rota.js":[function(require,module,exports) {
 "use strict";
 
@@ -33760,13 +33783,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var imageUrl = "http://127.0.0.1:8887/";
 var Rota = {
   "buildmaster": [{
     "name": "Adam Lammiman",
-    "image": "beaker.jpg"
+    "image": imageUrl + "beaker.jpg"
   }, {
     "name": "John Bartram",
-    "image": "kermit.jpg"
+    "image": imageUrl + "kermit.jpg"
   }]
 };
 var _default = Rota;
@@ -33784,6 +33808,8 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _Banner = _interopRequireDefault(require("./Banner.jsx"));
+
+var _Button = _interopRequireDefault(require("./Button"));
 
 var _buildmasterRota = _interopRequireDefault(require("../Data/buildmaster.rota.js"));
 
@@ -33829,14 +33855,14 @@ function (_React$Component) {
       return _react.default.createElement("div", null, _react.default.createElement(_Banner.default, {
         title: "This Weeks Build Master Is",
         name: currentmaster.name,
-        image: "http://127.0.0.1:8887/" + currentmaster.image
-      }), _react.default.createElement("div", null, _react.default.createElement("a", {
-        href: "",
-        "class": "previous"
-      }, "previous build master"), " ", _react.default.createElement("a", {
-        href: "",
-        "class": "next"
-      }, "next build master")));
+        image: currentmaster.image
+      }), _react.default.createElement("div", null, _react.default.createElement(_Button.default, {
+        "class": "previous",
+        text: "previous build master"
+      }), " ", _react.default.createElement(_Button.default, {
+        "class": "next",
+        text: "next build master"
+      })));
     }
   }]);
 
@@ -33845,7 +33871,7 @@ function (_React$Component) {
 
 var _default = BuildBanner;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Banner.jsx":"Components/Banner.jsx","../Data/buildmaster.rota.js":"Data/buildmaster.rota.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Banner.jsx":"Components/Banner.jsx","./Button":"Components/Button.jsx","../Data/buildmaster.rota.js":"Data/buildmaster.rota.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -33888,7 +33914,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63187" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50602" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

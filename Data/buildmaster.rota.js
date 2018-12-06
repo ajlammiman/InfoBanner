@@ -1,12 +1,14 @@
+let imageUrl = "http://127.0.0.1:8887/";
+
 var Rota = {
     "buildmaster": [
         {
             "name": "Adam Lammiman",
-            "image": "beaker.jpg"
+            "image": imageUrl + "beaker.jpg"
         },
         {
             "name": "John Bartram",
-            "image": "kermit.jpg"
+            "image": imageUrl + "kermit.jpg"
         }
     ]
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Banner from './Banner.jsx';
+import Button from './Button';
 import Rota from '../Data/buildmaster.rota.js'
 
 class BuildBanner extends React.Component {
@@ -13,8 +14,8 @@ class BuildBanner extends React.Component {
         const currentmaster = this.state;
         
         return <div>
-            <Banner title="This Weeks Build Master Is" name={currentmaster.name} image={"http://127.0.0.1:8887/" + currentmaster.image} />
-            <div><a href="" class="previous">previous build master</a> <a href="" class="next">next build master</a></div>
+            <Banner title="This Weeks Build Master Is" name={currentmaster.name} image={currentmaster.image} />
+            <div><Button class="previous" text="previous build master"/> <Button class="next" text="next build master"/></div>
         </div>;
     }
 }
