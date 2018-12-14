@@ -1,4 +1,4 @@
-let imageUrl = "http://127.0.0.1:8887/";
+const imageUrl = "http://127.0.0.1:8887/";
 
 var Rota = {
     "buildmaster": [

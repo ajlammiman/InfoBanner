@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Banner from './Banner.jsx';
 import Button from './Button';
-import Rota from '../Data/buildmaster.rota.js'
+import Store from '../STore/index.js'
 
 class BuildBanner extends React.Component {
     constructor() {
         super();
-        this.state = Rota.buildmaster[0];
+        this.state = Store.getState();
     }
 
     render() {     
