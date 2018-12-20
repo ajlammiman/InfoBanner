@@ -34506,6 +34506,17 @@ var Rota = {
 };
 var _default = Rota;
 exports.default = _default;
+},{}],"Constants/action-types.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PREVIOUS_BUILDMASTER = exports.NEXT_BUILDMASTER = void 0;
+var NEXT_BUILDMASTER = "NEXT_BUILDMASTER";
+exports.NEXT_BUILDMASTER = NEXT_BUILDMASTER;
+var PREVIOUS_BUILDMASTER = "PREVIOUS_BUILDMASTER";
+exports.PREVIOUS_BUILDMASTER = PREVIOUS_BUILDMASTER;
 },{}],"reducers/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -34516,19 +34527,29 @@ exports.default = void 0;
 
 var _buildmasterRota = _interopRequireDefault(require("../Data/buildmaster.rota.js"));
 
+var _actionTypes = _interopRequireDefault(require("../Constants/action-types"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = _buildmasterRota.default.buildmaster[0];
 
 var RootReducer = function RootReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-  return state;
+  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  switch (action.type) {
+    case _actionTypes.default:
+      return state = action.payload;
+      return Object.assign({}, state, action.payload);
+
+    default:
+      return state;
+  }
 };
 
 var _default = RootReducer;
 exports.default = _default;
-},{"../Data/buildmaster.rota.js":"Data/buildmaster.rota.js"}],"STore/index.js":[function(require,module,exports) {
+},{"../Data/buildmaster.rota.js":"Data/buildmaster.rota.js","../Constants/action-types":"Constants/action-types.js"}],"STore/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34664,7 +34685,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50144" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50739" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
