@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Banner from './Banner.jsx';
 import Button from './Button';
-import Store from '../STore/index.js'
+import Store from '../Store/index.js'
 
 class BuildBanner extends React.Component {
     constructor() {

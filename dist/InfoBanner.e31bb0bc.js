@@ -29196,11 +29196,9 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PREVIOUS_BUILDMASTER = exports.NEXT_BUILDMASTER = void 0;
-var NEXT_BUILDMASTER = "NEXT_BUILDMASTER";
-exports.NEXT_BUILDMASTER = NEXT_BUILDMASTER;
-var PREVIOUS_BUILDMASTER = "PREVIOUS_BUILDMASTER";
-exports.PREVIOUS_BUILDMASTER = PREVIOUS_BUILDMASTER;
+exports.CHANGE_BUILDMASTER = void 0;
+var CHANGE_BUILDMASTER = "CHANGE_BUILDMASTER";
+exports.CHANGE_BUILDMASTER = CHANGE_BUILDMASTER;
 },{}],"reducers/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -29211,7 +29209,7 @@ exports.default = void 0;
 
 var _buildmasterRota = _interopRequireDefault(require("../Data/buildmaster.rota.js"));
 
-var _actionTypes = _interopRequireDefault(require("../Constants/action-types"));
+var _actionTypes = require("../Constants/action-types");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29222,8 +29220,7 @@ var RootReducer = function RootReducer() {
   var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   switch (action.type) {
-    case _actionTypes.default:
-      return state = action.payload;
+    case _actionTypes.CHANGE_BUILDMASTER:
       return Object.assign({}, state, action.payload);
 
     default:
@@ -29233,7 +29230,22 @@ var RootReducer = function RootReducer() {
 
 var _default = RootReducer;
 exports.default = _default;
-},{"../Data/buildmaster.rota.js":"Data/buildmaster.rota.js","../Constants/action-types":"Constants/action-types.js"}],"STore/index.js":[function(require,module,exports) {
+},{"../Data/buildmaster.rota.js":"Data/buildmaster.rota.js","../Constants/action-types":"Constants/action-types.js"}],"actions/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.nextBuildMaster = void 0;
+
+var _actionTypes = require("../Constants/action-types");
+
+var nextBuildMaster = function nextBuildMaster(payload) {
+  type: _actionTypes.CHANGE_BUILDMASTER, payload;
+};
+
+exports.nextBuildMaster = nextBuildMaster;
+},{"../Constants/action-types":"Constants/action-types.js"}],"Store/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29245,12 +29257,16 @@ var _redux = require("redux");
 
 var _index = _interopRequireDefault(require("../reducers/index"));
 
+var _index2 = require("../actions/index");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Store = (0, _redux.createStore)(_index.default);
+window.store = Store;
+window.nextBuildMaster = _index2.nextBuildMaster;
 var _default = Store;
 exports.default = _default;
-},{"redux":"node_modules/redux/es/redux.js","../reducers/index":"reducers/index.js"}],"Components/BuildBanner.jsx":[function(require,module,exports) {
+},{"redux":"node_modules/redux/es/redux.js","../reducers/index":"reducers/index.js","../actions/index":"actions/index.js"}],"Components/BuildBanner.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29260,13 +29276,11 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
 var _Banner = _interopRequireDefault(require("./Banner.jsx"));
 
 var _Button = _interopRequireDefault(require("./Button"));
 
-var _index = _interopRequireDefault(require("../STore/index.js"));
+var _index = _interopRequireDefault(require("../Store/index.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29326,7 +29340,7 @@ function (_React$Component) {
 
 var _default = BuildBanner;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Banner.jsx":"Components/Banner.jsx","./Button":"Components/Button.jsx","../STore/index.js":"STore/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Banner.jsx":"Components/Banner.jsx","./Button":"Components/Button.jsx","../Store/index.js":"Store/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29370,7 +29384,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61457" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61959" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
