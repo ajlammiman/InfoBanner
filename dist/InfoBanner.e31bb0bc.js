@@ -26072,21 +26072,28 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.NextContent = exports.PreviousContent = void 0;
+exports.PreviousContent = PreviousContent;
+exports.NextContent = NextContent;
 
 var _actionTypes = require("../Constants/action-types");
 
-var PreviousContent = function PreviousContent(payload) {
-  type: _actionTypes.PREVIOUS, payload;
-};
+function PreviousContent(payload) {
+  return {
+    type: _actionTypes.PREVIOUS,
+    payload: payload
+  };
+}
 
-exports.PreviousContent = PreviousContent;
+;
 
-var NextContent = function NextContent(payload) {
-  type: _actionTypes.NEXT, payload;
-};
+function NextContent(payload) {
+  return {
+    type: _actionTypes.NEXT,
+    payload: payload
+  };
+}
 
-exports.NextContent = NextContent;
+;
 },{"../Constants/action-types":"Constants/action-types.js"}],"Components/Banner.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -26137,20 +26144,19 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Button = function Button(props) {
   return _react.default.createElement("div", null, _react.default.createElement("a", {
     href: "#",
-    className: props.class
+    className: props.class,
+    onClick: props.click
   }, props.text));
 };
 
 var _default = Button;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"Components/App.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"Components/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26168,6 +26174,8 @@ var _Banner = _interopRequireDefault(require("./Banner.jsx"));
 
 var _Button = _interopRequireDefault(require("./Button"));
 
+var _buildmasterRota = _interopRequireDefault(require("../Data/buildmaster.rota.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -26180,9 +26188,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -26196,36 +26204,67 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-var App =
+var BannerWrapper =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(App, _React$Component);
+  _inherits(BannerWrapper, _React$Component);
 
-  function App() {
-    _classCallCheck(this, App);
+  function BannerWrapper() {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _classCallCheck(this, BannerWrapper);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BannerWrapper).call(this));
+    _this.state = {
+      page: 1
+    };
+    _this.moveNext = _this.moveNext.bind(_assertThisInitialized(_this));
+    _this.movePrevious = _this.movePrevious.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
-  _createClass(App, [{
+  _createClass(BannerWrapper, [{
+    key: "moveNext",
+    value: function moveNext(event) {
+      event.preventDefaultBehaviour;
+      var nextPage = this.state.page++;
+      this.setState({
+        page: nextPage
+      });
+      this.props.NextContent(_buildmasterRota.default.content[nextPage]);
+    }
+  }, {
+    key: "movePrevious",
+    value: function movePrevious(event) {
+      event.preventDefaultBehaviour;
+      var previousPage = this.state.page != 0 ? this.state.page-- : this.state.page;
+      this.setState({
+        page: previousPage
+      });
+      this.props.NextContent(_buildmasterRota.default.content[previousPage]);
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("div", null, _react.default.createElement(_Banner.default, null), _react.default.createElement("div", null, _react.default.createElement(_Button.default, {
         "class": "previous",
-        text: "previous"
+        text: "previous",
+        click: this.movePrevious
       }), " ", _react.default.createElement(_Button.default, {
         "class": "next",
-        text: "next"
+        text: "next",
+        click: this.moveNext
       })));
     }
   }]);
 
-  return App;
+  return BannerWrapper;
 }(_react.default.Component);
 
+var App = (0, _reactRedux.connect)(null, mapDispatchToProps)(BannerWrapper);
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../Actions/index.js":"Actions/index.js","./Banner.jsx":"Components/Banner.jsx","./Button":"Components/Button.jsx"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../Actions/index.js":"Actions/index.js","./Banner.jsx":"Components/Banner.jsx","./Button":"Components/Button.jsx","../Data/buildmaster.rota.js":"Data/buildmaster.rota.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -26273,7 +26312,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50629" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50108" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

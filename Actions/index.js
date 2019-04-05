@@ -1,7 +1,5 @@
 import {PREVIOUS} from '../Constants/action-types';
 import {NEXT} from '../Constants/action-types';
 
-export const PreviousContent = (payload) =>  {type: PREVIOUS, payload};
-export const NextContent = (payload) =>  {type: NEXT, payload};
-
-
+export function PreviousContent(payload) {return {type: PREVIOUS, payload}};
+export function NextContent(payload) {return {type: NEXT, payload}};

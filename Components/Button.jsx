@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 const Button = (props) =>
     <div>
-        <a href="#" className={props.class}>{props.text}</a>
+        <a href="#" className={props.class} onClick={props.click}>{props.text}</a>
     </div>
 
 export default Button;
