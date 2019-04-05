@@ -4,6 +4,8 @@ Set-ExecutionPolicy AllSigned
 
 refreshenv
 
+choco install vscode
+
 choco install yarn
 
 refreshenv
