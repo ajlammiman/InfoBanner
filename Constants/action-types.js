@@ -1,2 +1,3 @@
-export const CHANGE_BUILDMASTER = "CHANGE_BUILDMASTER";
+export const PREVIOUS = "PREVIOUS";
+export const NEXT = "NEXT";
 

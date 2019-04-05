@@ -1,12 +1,14 @@
 import Rota from '../Data/buildmaster.rota.js';
-import {CHANGE_BUILDMASTER} from '../Constants/action-types';
+import {PREVIOUS} from '../Constants/action-types';
+import {NEXT} from '../Constants/action-types';
 
-var initialState = Rota.buildmaster[0];
+var initialState = Rota.content[0];
 
 const RootReducer = (state = initialState, action={}) => {
     switch(action.type)
     {
-        case CHANGE_BUILDMASTER:
+        case PREVIOUS:
+        case NEXT:
             return Object.assign({}, state, action.payload);
         default:
             return state;

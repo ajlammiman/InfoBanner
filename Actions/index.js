@@ -1,4 +1,7 @@
-import {CHANGE_BUILDMASTER} from '../Constants/action-types';
+import {PREVIOUS} from '../Constants/action-types';
+import {NEXT} from '../Constants/action-types';
 
-export const nextBuildMaster = (payload) =>  {type: CHANGE_BUILDMASTER, payload}
+export const PreviousContent = (payload) =>  {type: PREVIOUS, payload};
+export const NextContent = (payload) =>  {type: NEXT, payload};
+
 
