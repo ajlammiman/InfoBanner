@@ -25847,7 +25847,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-is.development.js');
 }
-},{"./cjs/react-is.development.js":"node_modules/react-is/cjs/react-is.development.js"}],"../../Users/alammiman/AppData/Local/Yarn/Data/global/node_modules/process/browser.js":[function(require,module,exports) {
+},{"./cjs/react-is.development.js":"node_modules/react-is/cjs/react-is.development.js"}],"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -28411,7 +28411,7 @@ var styled = _styled(StyledComponent, constructWithOptions);
 
 var _default = styled;
 exports.default = _default;
-},{"fbjs/lib/hyphenateStyleName":"node_modules/fbjs/lib/hyphenateStyleName.js","react":"node_modules/react/index.js","stylis":"node_modules/stylis/stylis.js","stylis-rule-sheet":"node_modules/stylis-rule-sheet/index.js","prop-types":"node_modules/prop-types/index.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","react-is":"node_modules/react-is/index.js","process":"../../Users/alammiman/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"Components/Banner.jsx":[function(require,module,exports) {
+},{"fbjs/lib/hyphenateStyleName":"node_modules/fbjs/lib/hyphenateStyleName.js","react":"node_modules/react/index.js","stylis":"node_modules/stylis/stylis.js","stylis-rule-sheet":"node_modules/stylis-rule-sheet/index.js","prop-types":"node_modules/prop-types/index.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","react-is":"node_modules/react-is/index.js","process":"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"Components/Banner.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29342,7 +29342,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = document.getElementById("app");
 
 _reactDom.default.render(_react.default.createElement(_BuildBanner.default, null), app);
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","./Components/BuildBanner.jsx":"Components/BuildBanner.jsx"}],"../../Users/alammiman/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","./Components/BuildBanner.jsx":"Components/BuildBanner.jsx"}],"../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29370,7 +29370,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52691" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61457" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -29545,5 +29545,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../Users/alammiman/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../Users/ajlam/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/InfoBanner.e31bb0bc.js.map

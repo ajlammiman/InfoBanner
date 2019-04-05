@@ -1,12 +1,12 @@
-Set-ExecutionPolicy AllSigned
-
-((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 refreshenv
 
 choco install vscode
 
 choco install yarn
+
+choco install nodejs
 
 refreshenv
 
