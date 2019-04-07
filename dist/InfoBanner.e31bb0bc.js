@@ -26012,11 +26012,9 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.NEXT = exports.PREVIOUS = void 0;
-var PREVIOUS = "PREVIOUS";
-exports.PREVIOUS = PREVIOUS;
-var NEXT = "NEXT";
-exports.NEXT = NEXT;
+exports.CHANGE = void 0;
+var CHANGE = "CHANGE";
+exports.CHANGE = CHANGE;
 },{}],"reducers/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -26038,8 +26036,7 @@ var RootReducer = function RootReducer() {
   var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   switch (action.type) {
-    case _actionTypes.PREVIOUS:
-    case _actionTypes.NEXT:
+    case _actionTypes.CHANGE:
       return Object.assign({}, state, action.payload);
 
     default:
@@ -26072,23 +26069,13 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PreviousContent = PreviousContent;
-exports.NextContent = NextContent;
+exports.ChangeContent = ChangeContent;
 
 var _actionTypes = require("../Constants/action-types");
 
-function PreviousContent(payload) {
+function ChangeContent(payload) {
   return {
-    type: _actionTypes.PREVIOUS,
-    payload: payload
-  };
-}
-
-;
-
-function NextContent(payload) {
-  return {
-    type: _actionTypes.NEXT,
+    type: _actionTypes.CHANGE,
     payload: payload
   };
 }
@@ -26198,8 +26185,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function mapDispatchToProps(dispatch) {
   return {
-    NextContent: function NextContent(content) {
-      return dispatch((0, _index.NextContent)(content));
+    ChangeContent: function ChangeContent(content) {
+      return dispatch((0, _index.ChangeContent)(content));
     }
   };
 }
@@ -26216,7 +26203,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BannerWrapper).call(this));
     _this.state = {
-      page: 1
+      page: 0
     };
     _this.moveNext = _this.moveNext.bind(_assertThisInitialized(_this));
     _this.movePrevious = _this.movePrevious.bind(_assertThisInitialized(_this));
@@ -26227,21 +26214,25 @@ function (_React$Component) {
     key: "moveNext",
     value: function moveNext(event) {
       event.preventDefaultBehaviour;
-      var nextPage = this.state.page++;
+      var amountOfContent = _buildmasterRota.default.content.length;
+      var currentPage = this.state.page;
+      var max = --amountOfContent;
+      var nextPage = currentPage < max ? ++currentPage : currentPage;
       this.setState({
         page: nextPage
       });
-      this.props.NextContent(_buildmasterRota.default.content[nextPage]);
+      this.props.ChangeContent(_buildmasterRota.default.content[nextPage]);
     }
   }, {
     key: "movePrevious",
     value: function movePrevious(event) {
       event.preventDefaultBehaviour;
-      var previousPage = this.state.page != 0 ? this.state.page-- : this.state.page;
+      var currentPage = this.state.page;
+      var previousPage = currentPage < 0 ? 1 : --currentPage;
       this.setState({
         page: previousPage
       });
-      this.props.NextContent(_buildmasterRota.default.content[previousPage]);
+      this.props.ChangeContent(_buildmasterRota.default.content[previousPage]);
     }
   }, {
     key: "render",
@@ -26312,7 +26303,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50108" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53717" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

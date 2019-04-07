@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {NextContent} from '../Actions/index.js';
+import {ChangeContent} from '../Actions/index.js';
 import Banner from './Banner.jsx';
 import Button from './Button';
 import Rota from '../Data/buildmaster.rota.js'
 
 function mapDispatchToProps(dispatch) {
     return {
-        NextContent: content => dispatch(NextContent(content))
+        ChangeContent: content => dispatch(ChangeContent(content))
     };
 }
 
@@ -16,7 +16,7 @@ class BannerWrapper extends React.Component {
         super();
 
         this.state = {
-            page: 1
+            page: 0
         };
 
         this.moveNext = this.moveNext.bind(this);
@@ -25,16 +25,21 @@ class BannerWrapper extends React.Component {
     
     moveNext(event) {
         event.preventDefaultBehaviour;
-        let nextPage = this.state.page++;
+        let amountOfContent = Rota.content.length;
+        let currentPage = this.state.page;
+        
+        let max = --amountOfContent;
+        let nextPage = (currentPage < max) ? ++currentPage : currentPage;
         this.setState({page: nextPage});
-        this.props.NextContent(Rota.content[nextPage])
+        this.props.ChangeContent(Rota.content[nextPage])
     }
     
     movePrevious(event) {
         event.preventDefaultBehaviour;
-        let previousPage = (this.state.page!=0) ? this.state.page-- : this.state.page;
+        let currentPage = this.state.page;
+        let previousPage = (currentPage < 0) ? 1 : --currentPage;
         this.setState({page: previousPage});
-        this.props.NextContent(Rota.content[previousPage])
+        this.props.ChangeContent(Rota.content[previousPage])
     }
 
     render() {     
