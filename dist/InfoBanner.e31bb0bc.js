@@ -26183,13 +26183,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function mapDispatchToProps(dispatch) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     ChangeContent: function ChangeContent(content) {
       return dispatch((0, _index.ChangeContent)(content));
     }
   };
-}
+};
 
 var BannerWrapper =
 /*#__PURE__*/
@@ -26214,25 +26214,35 @@ function (_React$Component) {
     key: "moveNext",
     value: function moveNext(event) {
       event.preventDefaultBehaviour;
-      var amountOfContent = _buildmasterRota.default.content.length;
-      var currentPage = this.state.page;
-      var max = --amountOfContent;
-      var nextPage = currentPage < max ? ++currentPage : currentPage;
+      var nextPage = this.nextPage();
       this.setState({
         page: nextPage
       });
       this.props.ChangeContent(_buildmasterRota.default.content[nextPage]);
     }
   }, {
+    key: "nextPage",
+    value: function nextPage() {
+      var max = _buildmasterRota.default.content.length - 1;
+      var currentPage = this.state.page;
+      return currentPage < max ? ++currentPage : 0;
+    }
+  }, {
     key: "movePrevious",
     value: function movePrevious(event) {
       event.preventDefaultBehaviour;
-      var currentPage = this.state.page;
-      var previousPage = currentPage < 0 ? 1 : --currentPage;
+      var previousPage = this.previousPage();
       this.setState({
         page: previousPage
       });
       this.props.ChangeContent(_buildmasterRota.default.content[previousPage]);
+    }
+  }, {
+    key: "previousPage",
+    value: function previousPage() {
+      var currentPage = this.state.page;
+      var previousPage = currentPage < 0 ? 1 : --currentPage;
+      return previousPage;
     }
   }, {
     key: "render",
@@ -26303,7 +26313,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53717" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61982" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

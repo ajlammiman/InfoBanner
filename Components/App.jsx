@@ -5,11 +5,12 @@ import Banner from './Banner.jsx';
 import Button from './Button';
 import Rota from '../Data/buildmaster.rota.js'
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         ChangeContent: content => dispatch(ChangeContent(content))
     };
 }
+
 
 class BannerWrapper extends React.Component {
     constructor() {
@@ -25,21 +26,28 @@ class BannerWrapper extends React.Component {
     
     moveNext(event) {
         event.preventDefaultBehaviour;
-        let amountOfContent = Rota.content.length;
-        let currentPage = this.state.page;
-        
-        let max = --amountOfContent;
-        let nextPage = (currentPage < max) ? ++currentPage : currentPage;
+        let nextPage = this.nextPage();
         this.setState({page: nextPage});
         this.props.ChangeContent(Rota.content[nextPage])
     }
     
+    nextPage() {
+        let max = (Rota.content.length - 1);
+        let currentPage = this.state.page;
+        return (currentPage < max) ? ++currentPage : 0;
+    }
+
     movePrevious(event) {
         event.preventDefaultBehaviour;
-        let currentPage = this.state.page;
-        let previousPage = (currentPage < 0) ? 1 : --currentPage;
+        let previousPage = this.previousPage();
         this.setState({page: previousPage});
         this.props.ChangeContent(Rota.content[previousPage])
+    }
+
+    previousPage() {
+        let currentPage = this.state.page;
+        let previousPage = (currentPage < 0) ? 1 : --currentPage;
+        return previousPage;
     }
 
     render() {     
