@@ -1,16 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {ChangeContent} from '../Actions/index.js';
+import {GetData} from '../Actions/index.js';
 import Banner from './Banner.jsx';
 import Button from './Button';
-import Rota from '../Data/buildmaster.rota.js'
 
 const mapDispatchToProps = (dispatch) => {
     return {
         ChangeContent: content => dispatch(ChangeContent(content))
     };
 }
-
 
 class BannerWrapper extends React.Component {
     constructor() {
@@ -24,6 +23,10 @@ class BannerWrapper extends React.Component {
         this.movePrevious = this.movePrevious.bind(this);
     }
     
+    componentDidMount() {
+        this.props.GetData();
+    }
+
     moveNext(event) {
         event.preventDefaultBehaviour;
         let nextPage = this.nextPage();

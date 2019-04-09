@@ -26069,18 +26069,18 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ChangeContent = ChangeContent;
+exports.ChangeContent = void 0;
 
 var _actionTypes = require("../Constants/action-types");
 
-function ChangeContent(payload) {
+var ChangeContent = function ChangeContent(payload) {
   return {
     type: _actionTypes.CHANGE,
     payload: payload
   };
-}
+};
 
-;
+exports.ChangeContent = ChangeContent;
 },{"../Constants/action-types":"Constants/action-types.js"}],"Components/Banner.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -26090,8 +26090,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _reactRedux = require("react-redux");
 
@@ -26121,7 +26119,7 @@ var Content = function Content(_ref) {
 var Banner = (0, _reactRedux.connect)(mapStateToProps)(Content);
 var _default = Banner;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-redux":"node_modules/react-redux/es/index.js"}],"Components/Button.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js"}],"Components/Button.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26313,7 +26311,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61982" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64803" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
