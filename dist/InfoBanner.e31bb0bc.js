@@ -28965,7 +28965,7 @@ exports.ChangeContent = ChangeContent;
 var DataLoad = function DataLoad() {
   return function (dispatch) {
     return dispatch({
-      type: DATA_LOADED,
+      type: _actionTypes.DATA_LOAD,
       payload: _buildmaster.default.content
     });
   };
@@ -29077,7 +29077,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     ChangeContent: function ChangeContent(content) {
       return dispatch((0, _index.ChangeContent)(content));
     },
-    DataLoad: _index.DataLoad
+    DataLoad: function DataLoad() {
+      return dispatch((0, _index.DataLoad)());
+    }
   };
 };
 
@@ -29109,7 +29111,7 @@ function (_React$Component) {
   _createClass(BannerWrapper, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var data = this.props.DataLoad;
+      var data = this.props.DataLoad().payload;
       console.log(data);
     }
   }, {
@@ -29215,7 +29217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51877" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58697" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

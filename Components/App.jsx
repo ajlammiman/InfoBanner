@@ -9,7 +9,7 @@ import {DataLoad} from '../Actions/index.js';
 const mapDispatchToProps = (dispatch) => {
     return {
         ChangeContent: content => dispatch(ChangeContent(content)),
-        DataLoad: DataLoad
+        DataLoad: () => dispatch(DataLoad())
     };
 }
 
@@ -32,7 +32,7 @@ class BannerWrapper extends React.Component {
     }
     
     componentDidMount() {
-        var data = this.props.DataLoad;
+        var data = this.props.DataLoad().payload;
         console.log(data);
     }
    
