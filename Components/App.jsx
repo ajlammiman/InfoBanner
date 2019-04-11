@@ -3,11 +3,19 @@ import {connect} from 'react-redux';
 import {ChangeContent} from '../Actions/index.js';
 import Banner from './Banner.jsx';
 import Button from './Button';
-import {Rota} from '../Data/buildmaster.rota';
+import Rota from '../Data/buildmaster.rota';
+import {DataLoad} from '../Actions/index.js';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        ChangeContent: content => dispatch(ChangeContent(content))
+        ChangeContent: content => dispatch(ChangeContent(content)),
+        DataLoad: DataLoad
+    };
+}
+
+const mapStateToProps = (state) => {
+    return {
+        content: state.content
     };
 }
 
@@ -23,6 +31,10 @@ class BannerWrapper extends React.Component {
         this.movePrevious = this.movePrevious.bind(this);
     }
     
+    componentDidMount() {
+        var data = this.props.DataLoad;
+        console.log(data);
+    }
    
     moveNext(event) {
         event.preventDefaultBehaviour;
@@ -58,6 +70,6 @@ class BannerWrapper extends React.Component {
     }
 }
 
-const App = connect(null, mapDispatchToProps)(BannerWrapper)
+const App = connect(mapStateToProps, mapDispatchToProps)(BannerWrapper)
 
 export default App;

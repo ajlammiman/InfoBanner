@@ -28854,9 +28854,11 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CHANGE = void 0;
+exports.DATA_LOAD = exports.CHANGE = void 0;
 var CHANGE = "CHANGE";
 exports.CHANGE = CHANGE;
+var DATA_LOAD = "DATA_LOAD";
+exports.DATA_LOAD = DATA_LOAD;
 },{}],"reducers/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -28879,6 +28881,7 @@ var RootReducer = function RootReducer() {
 
   switch (action.type) {
     case _actionTypes.CHANGE:
+    case _actionTypes.DATA_LOAD:
       return Object.assign({}, state, action.payload);
 
     default:
@@ -28888,7 +28891,35 @@ var RootReducer = function RootReducer() {
 
 var _default = RootReducer;
 exports.default = _default;
-},{"../Data/buildmaster.rota.js":"Data/buildmaster.rota.js","../Constants/action-types":"Constants/action-types.js"}],"Store/index.js":[function(require,module,exports) {
+},{"../Data/buildmaster.rota.js":"Data/buildmaster.rota.js","../Constants/action-types":"Constants/action-types.js"}],"node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+var _default = thunk;
+exports.default = _default;
+},{}],"Store/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28900,20 +28931,27 @@ var _redux = require("redux");
 
 var _index = _interopRequireDefault(require("../reducers/index"));
 
+var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Store = (0, _redux.createStore)(_index.default);
+var storeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
+var Store = (0, _redux.createStore)(_index.default, storeEnhancers((0, _redux.applyMiddleware)(_reduxThunk.default)));
 var _default = Store;
 exports.default = _default;
-},{"redux":"node_modules/redux/es/redux.js","../reducers/index":"reducers/index.js"}],"Actions/index.js":[function(require,module,exports) {
+},{"redux":"node_modules/redux/es/redux.js","../reducers/index":"reducers/index.js","redux-thunk":"node_modules/redux-thunk/es/index.js"}],"Actions/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ChangeContent = void 0;
+exports.DataLoad = exports.ChangeContent = void 0;
 
 var _actionTypes = require("../Constants/action-types");
+
+var _buildmaster = _interopRequireDefault(require("../Data/buildmaster.rota"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ChangeContent = function ChangeContent(payload) {
   return {
@@ -28923,7 +28961,18 @@ var ChangeContent = function ChangeContent(payload) {
 };
 
 exports.ChangeContent = ChangeContent;
-},{"../Constants/action-types":"Constants/action-types.js"}],"Components/Banner.jsx":[function(require,module,exports) {
+
+var DataLoad = function DataLoad() {
+  return function (dispatch) {
+    return dispatch({
+      type: DATA_LOADED,
+      payload: _buildmaster.default.content
+    });
+  };
+};
+
+exports.DataLoad = DataLoad;
+},{"../Constants/action-types":"Constants/action-types.js","../Data/buildmaster.rota":"Data/buildmaster.rota.js"}],"Components/Banner.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29001,7 +29050,7 @@ var _Banner = _interopRequireDefault(require("./Banner.jsx"));
 
 var _Button = _interopRequireDefault(require("./Button"));
 
-var _buildmaster = require("../Data/buildmaster.rota");
+var _buildmaster = _interopRequireDefault(require("../Data/buildmaster.rota"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29027,7 +29076,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     ChangeContent: function ChangeContent(content) {
       return dispatch((0, _index.ChangeContent)(content));
-    }
+    },
+    DataLoad: _index.DataLoad
+  };
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    content: state.content
   };
 };
 
@@ -29051,6 +29107,12 @@ function (_React$Component) {
   }
 
   _createClass(BannerWrapper, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var data = this.props.DataLoad;
+      console.log(data);
+    }
+  }, {
     key: "moveNext",
     value: function moveNext(event) {
       event.preventDefaultBehaviour;
@@ -29058,12 +29120,12 @@ function (_React$Component) {
       this.setState({
         page: nextPage
       });
-      this.props.ChangeContent(_buildmaster.Rota.content[nextPage]);
+      this.props.ChangeContent(_buildmaster.default.content[nextPage]);
     }
   }, {
     key: "nextPage",
     value: function nextPage() {
-      var max = _buildmaster.Rota.content.length - 1;
+      var max = _buildmaster.default.content.length - 1;
       var currentPage = this.state.page;
       return currentPage < max ? ++currentPage : 0;
     }
@@ -29075,7 +29137,7 @@ function (_React$Component) {
       this.setState({
         page: previousPage
       });
-      this.props.ChangeContent(_buildmaster.Rota.content[previousPage]);
+      this.props.ChangeContent(_buildmaster.default.content[previousPage]);
     }
   }, {
     key: "previousPage",
@@ -29102,7 +29164,7 @@ function (_React$Component) {
   return BannerWrapper;
 }(_react.default.Component);
 
-var App = (0, _reactRedux.connect)(null, mapDispatchToProps)(BannerWrapper);
+var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BannerWrapper);
 var _default = App;
 exports.default = _default;
 },{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../Actions/index.js":"Actions/index.js","./Banner.jsx":"Components/Banner.jsx","./Button":"Components/Button.jsx","../Data/buildmaster.rota":"Data/buildmaster.rota.js"}],"index.js":[function(require,module,exports) {
@@ -29153,7 +29215,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51271" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51877" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
