@@ -6,7 +6,6 @@ var initialState = Rota.content[0];
 const RootReducer = (state = initialState, action={}) => {
     switch(action.type) {
         case CHANGE:
-        case DATALOADED:
             return Object.assign({}, state, action.payload);
         default:
             return state;
