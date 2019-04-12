@@ -29050,8 +29050,6 @@ var _Banner = _interopRequireDefault(require("./Banner.jsx"));
 
 var _Button = _interopRequireDefault(require("./Button"));
 
-var _buildmaster = _interopRequireDefault(require("../Data/buildmaster.rota"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -29105,14 +29103,14 @@ function (_React$Component) {
     };
     _this.moveNext = _this.moveNext.bind(_assertThisInitialized(_this));
     _this.movePrevious = _this.movePrevious.bind(_assertThisInitialized(_this));
+    _this.getData = _this.getData.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(BannerWrapper, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var data = this.props.DataLoad().payload;
-      console.log(data);
+    key: "getData",
+    value: function getData() {
+      return this.props.DataLoad().payload;
     }
   }, {
     key: "moveNext",
@@ -29122,12 +29120,12 @@ function (_React$Component) {
       this.setState({
         page: nextPage
       });
-      this.props.ChangeContent(_buildmaster.default.content[nextPage]);
+      this.props.ChangeContent(this.getData()[nextPage]);
     }
   }, {
     key: "nextPage",
     value: function nextPage() {
-      var max = _buildmaster.default.content.length - 1;
+      var max = this.getData().length - 1;
       var currentPage = this.state.page;
       return currentPage < max ? ++currentPage : 0;
     }
@@ -29139,13 +29137,13 @@ function (_React$Component) {
       this.setState({
         page: previousPage
       });
-      this.props.ChangeContent(_buildmaster.default.content[previousPage]);
+      this.props.ChangeContent(this.getData()[previousPage]);
     }
   }, {
     key: "previousPage",
     value: function previousPage() {
       var currentPage = this.state.page;
-      var previousPage = currentPage < 0 ? 1 : --currentPage;
+      var previousPage = currentPage <= 0 ? 1 : --currentPage;
       return previousPage;
     }
   }, {
@@ -29169,7 +29167,7 @@ function (_React$Component) {
 var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BannerWrapper);
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../Actions/index.js":"Actions/index.js","./Banner.jsx":"Components/Banner.jsx","./Button":"Components/Button.jsx","../Data/buildmaster.rota":"Data/buildmaster.rota.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../Actions/index.js":"Actions/index.js","./Banner.jsx":"Components/Banner.jsx","./Button":"Components/Button.jsx"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29217,7 +29215,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58697" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57805" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
